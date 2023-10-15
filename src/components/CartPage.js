@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import axios from 'axios';
+import axios from '../axios';
 import { updateCart } from "../features/cartSlice";
 import Navbar from "../components/Navbar";
 import { useNavigate } from 'react-router-dom'
@@ -25,7 +25,7 @@ const CartPage = () => {
   const addQty = (data) => {
     try {
       let loginUserId = localStorage.getItem("loginUserId");
-      const apiUrl = "http://127.0.0.1:5141/api/addRemoveCartQty";
+      const apiUrl = "/api/addRemoveCartQty";
       axios
         .post(apiUrl, {
           data: data,
@@ -52,7 +52,7 @@ const CartPage = () => {
   const removeQty = (data) => {
     try {
       let loginUserId = localStorage.getItem("loginUserId");
-      const apiUrl = "http://127.0.0.1:5141/api/addRemoveCartQty";
+      const apiUrl = "/api/addRemoveCartQty";
       axios
         .post(apiUrl, {
           data: data,
@@ -79,7 +79,7 @@ const CartPage = () => {
   const removeItem = (data) => {
     try {
       let loginUserId = localStorage.getItem("loginUserId");
-      const apiUrl = "http://127.0.0.1:5141/api/deleteItem";
+      const apiUrl = "/api/deleteItem";
       axios
         .post(apiUrl, {
           data: data,
@@ -105,7 +105,7 @@ const CartPage = () => {
 
   const paymentFunction = () => {
     try {
-      const apiUrl = "http://127.0.0.1:5141/api/paymentApi";
+      const apiUrl = "/api/paymentApi";
 
       axios
         .post(apiUrl, { cart: cart })

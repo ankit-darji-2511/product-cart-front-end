@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
@@ -22,10 +22,10 @@ function LoginPage() {
 
   const handleSubmit = (e) => {
     try {
+      console.log("called");
       e.preventDefault();
-      const apiUrl = "http://127.0.0.1:5141/api/checkUser";
-      axios
-        .post(apiUrl, formData)
+      const apiUrl = "/api/checkUser";
+      axios.post(apiUrl, formData)
         .then((response) => {
 
           console.log("response>> ", response);

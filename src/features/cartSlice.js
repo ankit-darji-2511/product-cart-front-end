@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from '../axios';
 
 const initialState = {
   cart: [],
@@ -10,7 +10,7 @@ const initialState = {
 export const fetchData = createAsyncThunk('fetchData', async () => {
   try {
     let user_id = localStorage.getItem("loginUserId");
-    const apiUrl = "http://127.0.0.1:5141/api/getUserWiseCartItemList";
+    const apiUrl = "/api/getUserWiseCartItemList";
 
     let response = await axios.post(apiUrl, { user_id: user_id }).catch((error) => console.log("Error fetching Item : ", error));
     if (response.data.status === 200) {
@@ -32,7 +32,7 @@ const cartSlice = createSlice({
 
     updateCart: (state, action) => {
       try {
-        if (action.payload.paymentUpdate == true) {
+        if (action.payload.paymentUpdate === true) {
           state.cart = [];
           state.totalQuantity = 0;
           state.totalPrice = 0;

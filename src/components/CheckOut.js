@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from '../axios';
 
 import { MDBBtn } from "mdb-react-ui-kit";
 import { useDispatch } from "react-redux";
@@ -11,7 +11,7 @@ const TableListing = () => {
 
   useEffect(() => {
     try {
-      const apiUrl = "http://127.0.0.1:5141/api/getItemList";
+      const apiUrl = "/api/getItemList";
 
       axios
         .get(apiUrl)
@@ -30,7 +30,7 @@ const TableListing = () => {
   useEffect(() => {
     try {
         let user_id = localStorage.getItem("loginUserId");
-      const apiUrl = "http://127.0.0.1:5141/api/getUserAddedAllCartItemCount";
+      const apiUrl = "/api/getUserAddedAllCartItemCount";
 
       axios
         .post(apiUrl, {user_id : user_id})

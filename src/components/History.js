@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import { MDBBtn, MDBModal, MDBModalDialog, MDBModalContent, MDBModalHeader, MDBModalTitle, MDBModalBody, MDBModalFooter } from "mdb-react-ui-kit";
 import Navbar from "./Navbar";
-import axios from "axios";
+import axios from '../axios';
 
 
 
@@ -20,7 +20,7 @@ const TableListing = () => {
   const getHistoryDetails = () => {
     try {
       let loginUserId = localStorage.getItem("loginUserId");
-      const apiUrl = "http://127.0.0.1:5141/api/getHistoryDetails";
+      const apiUrl = "/api/getHistoryDetails";
       axios
         .post(apiUrl, {
           loginUserId: loginUserId

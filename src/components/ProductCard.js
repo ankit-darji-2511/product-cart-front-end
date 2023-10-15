@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from '../axios';
 import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem } from "mdb-react-ui-kit";
 import { MDBBtn, MDBIcon, MDBModal, MDBModalDialog, MDBModalContent, MDBModalHeader, MDBModalTitle, MDBModalBody, MDBModalFooter, MDBInput, MDBContainer, MDBRow, MDBCol, MDBSwitch } from "mdb-react-ui-kit";
 import { useDispatch } from "react-redux";
@@ -57,7 +57,7 @@ const History = () => {
       }
 
 
-      const apiUrl = "http://127.0.0.1:5141/api/getItemList";
+      const apiUrl = "/api/getItemList";
       axios
         .post(apiUrl, searchObj)
         .then((response) => {
@@ -80,7 +80,7 @@ const History = () => {
   const getUserAddedAllCartItemCount = () => {
     try {
       let user_id = localStorage.getItem("loginUserId");
-      const apiUrl = "http://127.0.0.1:5141/api/getUserAddedAllCartItemCount";
+      const apiUrl = "/api/getUserAddedAllCartItemCount";
 
       axios
         .post(apiUrl, { user_id: user_id })
@@ -103,7 +103,7 @@ const History = () => {
 
   const getCategoryList = () => {
     try {
-      const apiUrl = "http://127.0.0.1:5141/api/getCategoryList";
+      const apiUrl = "/api/getCategoryList";
 
       axios
         .get(apiUrl)
@@ -127,7 +127,7 @@ const History = () => {
   const addToCart = (item_id) => {
     try {
       let loginUserId = localStorage.getItem("loginUserId");
-      const apiUrl = "http://127.0.0.1:5141/api/addToCart";
+      const apiUrl = "/api/addToCart";
       axios
         .post(apiUrl, {
           item_id: item_id,
@@ -208,7 +208,7 @@ const History = () => {
       }
       else {
 
-        const apiUrl = "http://127.0.0.1:5141/api/addItem";
+        const apiUrl = "/api/addItem";
         axios
           .post(apiUrl, formData)
           .then((response) => {
